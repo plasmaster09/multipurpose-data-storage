@@ -1,5 +1,7 @@
 # Part 01: Prototyping our web pages 
 
+> You can the example prototype pages on [the Github Pages site.](https://atcs-wang.github.io/inventory-webapp-01-static-prototypes/)
+
 ## Using a front-end framework
 
 To help avoid spending too much time on making our web pages look good, we will utilize [Materialize](https://materializecss.com/), a front-end "framework", to do a lot of the design work and decisions for us. It is an open-source library of CSS and JS that can be easily used in any web page. By incorporating Materialize's preset classes (and a short bit of JS script or two), your HTML elements will be styled to have that bold, user-friendly, "material" design that was popularized by Google product designers. Materialize can also help make pages more "responsive", or adaptive to the user's device, be it a laptop or tablet or mobile phone.
@@ -75,4 +77,12 @@ In the `stuff.html` and `item.html` pages, there is a small internal CSS stylesh
 ```
 > You might be wondering why we aren't using external stylesheets or JS scripts, . We'll refactor and move it later; for now, its easier keeping everything related to one page in one file.
 
-You can use Github Pages to host your prototypes as a static site, if you wish.
+## Optional: Publishing your prototypes 
+
+Althoug prototypes aren't a fully working webapp yet, you can publish them for fun!
+
+You can use [Github Pages](https://pages.github.com/) to easily publish any Github repository as a simple website. 
+
+This creates a *static web server* that handles requests for your files. 
+
+In the next lesson, we'll discuss what a web server does and build our own.
