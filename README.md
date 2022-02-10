@@ -30,7 +30,8 @@ At the bottom of the `<body>` of `stuff.html` and `item.html` is a link to Mater
 The main content of the pages are found in the `<body>`, above the scripts. Each page uses a number of Materialize features in its content. Relevant documentation from the [Materialize website](https://materializecss.com/) is linked for each feature.
 
 - Every page:
-    - Surrounding container div to lightly center all main content. | [container documentation](https://materializecss.com/grid.html#grid-container)
+    - Surrounding container `<div>` to lightly center all main content. | [container documentation](https://materializecss.com/grid.html#grid-container)
+    - Icons (`<i>`) - (Materialize supports Google's Material Icons) | [icons documentation](https://materializecss.com/icons.html)
     - "Waves" effects applied to various elements. | [waves effect documentation](https://materializecss.com/waves.html)
 
 - `index.html`, the Home page
