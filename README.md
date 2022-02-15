@@ -86,3 +86,5 @@ You can use [Github Pages](https://pages.github.com/) to easily publish any Gith
 This creates a *static web server* that handles requests for your files. 
 
 In the next lesson, we'll discuss what a web server does and build our own.
+
+Next up: [Part 02: Web app server setup and basics](https://github.com/atcs-wang/inventory-webapp-02-app-server-basics)
