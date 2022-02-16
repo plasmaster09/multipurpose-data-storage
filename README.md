@@ -2,11 +2,11 @@
 
 > You can the example prototype pages on [the Github Pages site.](https://atcs-wang.github.io/inventory-webapp-01-static-prototypes/)
 
-## Using a front-end framework
+## (1.1) Using a front-end framework
 
 To help avoid spending too much time on making our web pages look good, we will utilize [Materialize](https://materializecss.com/), a front-end "framework", to do a lot of the design work and decisions for us. It is an open-source library of CSS and JS that can be easily used in any web page. By incorporating Materialize's preset classes (and a short bit of JS script or two), your HTML elements will be styled to have that bold, user-friendly, "material" design that was popularized by Google product designers. Materialize can also help make pages more "responsive", or adaptive to the user's device, be it a laptop or tablet or mobile phone.
 
-## Building the static prototype pages
+## (1.2) Building the static prototype pages
 
 There are three HTML pages. Each was first generated with the Emmet abbreviation in VSCode (simply create an empty HTML file, type `!` and hit enter). The `title` element was changed, and the relevant parts of the Materialize library was "imported" 
 
@@ -77,7 +77,7 @@ In the `stuff.html` and `item.html` pages, there is a small internal CSS stylesh
 ```
 > You might be wondering why we aren't using external stylesheets or JS scripts, . We'll refactor and move it later; for now, its easier keeping everything related to one page in one file.
 
-## Optional: Publishing your prototypes 
+## (1.3) Optional: Publishing your prototypes 
 
 Althoug prototypes aren't a fully working webapp yet, you can publish them for fun!
 
@@ -85,4 +85,7 @@ You can use [Github Pages](https://pages.github.com/) to easily publish any Gith
 
 This creates a *static web server* that handles requests for your files. 
 
-In the next lesson, we'll discuss what a web server does and build our own.
+
+## (1.4) Conclusion:
+
+In the [next lesson](https://github.com/atcs-wang/inventory-webapp-02-app-server-basics), we'll discuss what a web server does and build our own.
