@@ -18,7 +18,6 @@ For all 3 pages, Materialize's CSS and Google's material icons are linked in the
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 ```
 
-
 At the bottom of the `<body>` of `stuff.html` and `item.html` is a link to Materialize's JS, and a short "auto-initialize" script.
 
 ```html
@@ -57,6 +56,8 @@ The main content of the pages are found in the `<body>`, above the scripts. Each
         - "NEVER MIND" link-"button" inside the modal that closes the modal. 
     - "Edit Item" form inside the modal - similar to the "Add Item" form in `stuff.html` with an additional input for description | [form inputs documentation](https://materializecss.com/text-inputs.html )
 
+> A great way to see what Materialize is doing for the page is to temporarily remove or comment out the links to the Materialize CSS/JS.
+
 In both the `stuff.html` and `item.html` pages, there is a small internal CSS stylesheet to set a few custom styles. The CSS is identical for both pages.
 
 ```css
@@ -81,13 +82,15 @@ In both the `stuff.html` and `item.html` pages, there is a small internal CSS st
 
 These example prototype pages are published online via [the Github Pages site.](https://atcs-wang.github.io/inventory-webapp-01-static-prototypes/)
 
-As you write your HTML files on your computer, you'll want to see how they'd look in the browser. Here are 2 ways you can do that.
+However, as you write HTML files on your computer, you'll want to see how they'd look in the browser without having to publish them first. 
+
+Here are 2 ways you can view your pages locally:
 1) Enter the *full file path* of your HTML file into the URL bar of your browser. 
     - An easy way to get that path is to right-click the file in VSCode's Explorer and choose **"Copy Path"**; then paste it into your browser's URL bar. 
     - Note that any changes to your file do not automatically update the page in the browser; refresh to see any updates. 
-3) Install the VSCode Extension **"Live Server"**  (by Ritwick Dey). Then, right-click on your file and choose **"Open with Live Server"**. 
-    - This runs a simple web server on your computer, serving files ONLY in the VSCode project folder.
-    - This web server is only accessible locally: notice the URL contains the special "localhost" IP address (`127.0.0.1`).
+3) Install the VSCode Extension **"Live Server"**  (by Ritwick Dey). Then, right-click on your file and choose **"Open with Live Server"**.
+    - This starts a simple web server on your computer, serving files ONLY in the VSCode project folder. (Right-click on any HTML file and choose "Stop Live Server" to stop the server).
+    - This web server is only accessible locally to your own web browser: notice the URL contains the special "localhost" IP address (`127.0.0.1`), which refers to your own computer. The port number after the colon (likely `5500`) refers to the specific server process.
     - The best part of Live Server is that any *changes to your HTML file will result in an automatic refresh to your browser page!*
 
 ## (1.4) Optional: Publishing your prototypes with Github Pages
@@ -110,3 +113,6 @@ Github Pages creates a *static file server* for your webpage, which handles simp
 ## (1.5) Conclusion:
 
 In the next lesson, we'll discuss what a web server does and build our own.
+
+Next up: [Part 02: Web app server setup and basics](https://github.com/atcs-wang/inventory-webapp-02-app-server-basics)
+
