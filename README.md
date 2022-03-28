@@ -2,15 +2,19 @@
 
 > You can view these example prototype pages on [the Github Pages site.](https://atcs-wang.github.io/inventory-webapp-01-static-prototypes/)
 
-## (1.1) Using a front-end framework
+## (1.1) Why are we using a front-end framework like Materialize?
 
 To help avoid spending too much time on making our web pages look good, we will utilize [Materialize](https://materializecss.com/), a front-end "framework", to do a lot of the design work and decisions for us. It is an open-source library of CSS and JS that can be easily used in any web page. By incorporating Materialize's preset classes (and a short bit of JS script or two), your HTML elements will be styled to have that bold, user-friendly, "material" design that was popularized by Google product designers. Materialize can also help make pages more "responsive", or adaptive to the user's device, be it a laptop or tablet or mobile phone.
 
 ## (1.2) Building the static prototype pages
 
-There are three HTML pages. Each was first generated with the Emmet abbreviation in VSCode (simply create an empty HTML file, type `!` and hit enter). The `title` element was changed, and the relevant parts of the Materialize library are "imported". 
+There are three HTML pages. Each was first generated with the Emmet abbreviation in VSCode (simply create an empty HTML file, type `!` and hit enter) before filling in the head and body with content. The style/layout of the content was largely done with Materialize, with a little bit of custom CSS.
 
-For all 3 pages, Materialize's CSS and Google's material icons are linked in the `<head>`. 
+### (1.2.1) Materialize features used
+
+For all 3 pages, the relevant parts of the Materialize library are "imported" at various points. 
+
+Materialize's CSS and Google's material icons are linked in the `<head>`:
 
 ```html
     <!-- Materialize CSS and Icons-->
@@ -18,7 +22,7 @@ For all 3 pages, Materialize's CSS and Google's material icons are linked in the
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 ```
 
-At the bottom of the `<body>` of `stuff.html` and `item.html` is a link to Materialize's JS, and a short "auto-initialize" script.
+At the bottom of the `<body>` of `stuff.html` and `item.html` is a link to Materialize's JS, and a short "auto-initialize" script:
 
 ```html
     <!-- Materialize JavaScript -->
@@ -57,6 +61,10 @@ The main content of the pages are found in the `<body>`, above the scripts. Each
     - "Edit Item" form inside the modal - similar to the "Add Item" form in `stuff.html` with an additional input for description | [form inputs documentation](https://materializecss.com/text-inputs.html )
 
 > A great way to see what Materialize is doing for the page is to temporarily remove or comment out the links to the Materialize CSS/JS.
+
+You may notice that our prototype currently lack a navigation bar (aka "navbar") which is a common feature of many webapps, displaying at the top of every page. This omission is only temporary but purposeful - we will add one later when we have better techniques for reducing code repetition. However, if you wanted to add one now, you can read the [Materialize navbar documentation](https://materializecss.com/navbar.html).
+
+### (1.2.2) Custom CSS features
 
 In both the `stuff.html` and `item.html` pages, there is a small internal CSS stylesheet to set a few custom styles. The CSS is identical for both pages.
 
