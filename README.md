@@ -75,7 +75,7 @@ In the `stuff.html` and `item.html` pages, there is a small internal CSS stylesh
         background-color: #F0F0F0;
     }
 ```
-> You might be wondering why we aren't using external stylesheets or JS scripts, . We'll refactor and move it later; for now, its easier keeping everything related to one page in one file.
+> You might be wondering why this example isn't using external stylesheets or JS scripts. We'll refactor and move it a little bit later, but for now its easier keeping everything related to one page in one file. However, if you wish to organize your CSS and JS into external files, go right ahead!
 
 ## (1.3) Optional: Publishing your prototypes 
 
