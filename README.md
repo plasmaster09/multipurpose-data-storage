@@ -36,12 +36,14 @@ The main content of the pages are found in the `<body>`, above the scripts. Each
 
 - Every page:
     - Surrounding container `<div>` to lightly center all main content. | [container documentation](https://materializecss.com/grid.html#grid-container)
+    - Headings | [headers documentation](https://materializecss.com/typography.html#headers)
+    - Stylized `<button>` elements or anchor `<a>` elements that are styled like buttons | [button documentation](https://materializecss.com/buttons.html)
+    - "Waves" effects applied to various elements, largely buttons. | [waves effect documentation](https://materializecss.com/waves.html)
     - Icons (`<i>`) - (Materialize supports Google's Material Icons) | [icons documentation](https://materializecss.com/icons.html)
-    - "Waves" effects applied to various elements. | [waves effect documentation](https://materializecss.com/waves.html)
 
 - `index.html`, the Home page
-    - Simple greeting headings. | [headers documentation](https://materializecss.com/typography.html#headers)
-    - Link-"button" to Stuff Inventory page | [button documentation](https://materializecss.com/buttons.html)
+    - Simple greeting in a heading | [headers documentation](https://materializecss.com/typography.html#headers)
+    - Link-"button" to the Stuff page | ([button documentation](https://materializecss.com/buttons.html))
 
 - `stuff.html`, the Stuff inventory page 
     - Table of info for each item (name & quantity). | [table documentation](https://materializecss.com/table.html)
@@ -52,17 +54,17 @@ The main content of the pages are found in the `<body>`, above the scripts. Each
         - The form layout is done via Materialize's Grid system. | [grid documentation](https://materializecss.com/grid.html#grid-intro)
 
 - `item.html`, the Item detail page
-    - Item info in a table (name & quantity & description) | [table documentation](https://materializecss.com/table.html)
+    - Similar to `stuff.html`, all item info in a table (name & quantity & description) | [table documentation](https://materializecss.com/table.html)
     - Text size/layout is responsive to screen size/layout. | [flow text documentation](https://materializecss.com/typography.html#flow)
     - "DELETE" link-"button" (non-functional) | [button documentation](https://materializecss.com/buttons.html)
     - Modal ("pop-up" mini-window) | [modal documentation](https://materializecss.com/modals.html)
-        - "EDIT" link-"button" outside the modal that shows it
-        - "NEVER MIND" link-"button" inside the modal that closes the modal. 
+        - "EDIT" link-"button" outside the modal that triggers showing the modal.
+        - "NEVER MIND" button inside the modal that closes the modal. 
     - "Edit Item" form inside the modal - similar to the "Add Item" form in `stuff.html` with an additional input for description | [form inputs documentation](https://materializecss.com/text-inputs.html )
 
 > A great way to see what Materialize is doing for the page is to temporarily remove or comment out the links to the Materialize CSS/JS.
 
-You may notice that our prototype currently lack a navigation bar (aka "navbar") which is a common feature of many webapps, displaying at the top of every page. This omission is only temporary but purposeful - we will add one later when we have better techniques for reducing code repetition. However, if you wanted to add one now, you can read the [Materialize navbar documentation](https://materializecss.com/navbar.html).
+You may notice that our prototypes currently lack a navigation bar (aka "navbar") which is a common feature of many webapps, displaying at the top of every page. This omission is only temporary but purposeful - we will add one later when we have better techniques for reducing code repetition. However, if you wanted to add one now, you can read the [Materialize navbar documentation](https://materializecss.com/navbar.html).
 
 ### (1.2.2) Custom CSS features
 
