@@ -1,10 +1,16 @@
+Welcome to my basic web-app building tutorial series. Together, we will build a simple "inventory" web application. The running example will be a homework tracker; in each tutorial, you will be given the next steps.
+
+However, you can (and should!) also build your own application that is more applicable to your own interests and needs, both to keep things more interesting for you and to help you practice applying the skills and understandings you gain. 
+
 # Part 01: Prototyping our web pages 
+
+Our first steps is to build **static prototypes** of our intended web app. 
 
 > You can view these example prototype pages on [the Github Pages site.](https://atcs-wang.github.io/inventory-webapp-01-static-prototypes/)
 
 ## (1.1) Why are we using a front-end framework like Materialize?
 
-To help avoid spending too much time on making our web pages look good, we will utilize [Materialize](https://materializecss.com/), a front-end "framework", to do a lot of the design work and decisions for us. It is an open-source library of CSS and JS that can be easily used in any web page. By incorporating Materialize's preset classes (and a short bit of JS script or two), your HTML elements will be styled to have that bold, user-friendly, "material" design that was popularized by Google product designers. Materialize can also help make pages more "responsive", or adaptive to the user's device, be it a laptop or tablet or mobile phone.
+To help avoid spending too much time on making our web pages look good, we will utilize [Materialize](https://materializecss.com/), a front-end "framework", to do a lot of the design work and decisions for us. It is an open-source library of CSS and JS that can be easily used in any web page. By incorporating Materialize's preset classes (and a little bit of JS to initialize the more "interactive" elements), your HTML elements will be styled to have that bold, user-friendly, "material" design that was popularized by Google product designers. Materialize can also help make pages more "responsive", or adaptive to the user's device, be it a laptop or tablet or mobile phone.
 
 ## (1.2) Building the static prototype pages
 
@@ -67,7 +73,7 @@ The main content of the pages are found in the `<body>`, above the scripts. Each
 
 > A great way to see what Materialize is doing for the page is to temporarily remove or comment out the links to the Materialize CSS/JS.
 
-> Our nav bar in particular is repetitiousness. We will eventually introduce a useful technique in EJS called "partials" that will allow us to avoid repetitive HTML.
+> Our nav bar is particularly repetitious, as it takes a large chunk of code and appears the same on all pages. We will eventually introduce a useful technique in EJS called "partials" that will allow us to encapsulate and reuse HTML chunks.
 
 ### (1.2.2) Custom CSS features
 
@@ -88,8 +94,9 @@ In both the `assignments.html` and `detail.html` pages, there is a small interna
     tr:hover {
         background-color: #F0F0F0;
     }
+
 ```
-> This example isn't using external stylesheets or JS scripts yet, which is causing some repetitiousness. We'll refactor a little bit later, but for now its okay keeping everything related to one page in one file. However, if you wish to organize your CSS and JS into external files, go right ahead!
+> This example isn't using external stylesheets or JS scripts yet, which is again causing some repetitiousness. We'll refactor a little bit later, but for now its okay keeping everything related to one page in one file. However, if you wish to organize your own CSS and JS into external files from the start, go right ahead!
 
 ## (1.3) Viewing and Testing the prototype pages locally.
 
