@@ -1,10 +1,16 @@
+Welcome to my basic web-app building tutorial series. Together, we will build a simple "inventory" web application. The running example will be a homework tracker; in each tutorial, you will be given the next steps.
+
+However, you can (and should!) also build your own application that is more applicable to your own interests and needs, both to keep things more interesting for you and to help you practice applying the skills and understandings you gain. 
+
 # Part 01: Prototyping our web pages 
+
+Our first steps is to build **static prototypes** of our intended web app. 
 
 > You can view these example prototype pages on [the Github Pages site.](https://atcs-wang.github.io/inventory-webapp-01-static-prototypes/)
 
 ## (1.1) Why are we using a front-end framework like Materialize?
 
-To help avoid spending too much time on making our web pages look good, we will utilize [Materialize](https://materializecss.com/), a front-end "framework", to do a lot of the design work and decisions for us. It is an open-source library of CSS and JS that can be easily used in any web page. By incorporating Materialize's preset classes (and a short bit of JS script or two), your HTML elements will be styled to have that bold, user-friendly, "material" design that was popularized by Google product designers. Materialize can also help make pages more "responsive", or adaptive to the user's device, be it a laptop or tablet or mobile phone.
+To help avoid spending too much time on making our web pages look good, we will utilize [Materialize](https://materializecss.com/), a front-end "framework", to do a lot of the design work and decisions for us. It is an open-source library of CSS and JS that can be easily used in any web page. By incorporating Materialize's preset classes (and a little bit of JS to initialize the more "interactive" elements), your HTML elements will be styled to have that bold, user-friendly, "material" design that was popularized by Google product designers. Materialize can also help make pages more "responsive", or adaptive to the user's device, be it a laptop or tablet or mobile phone.
 
 ## (1.2) Building the static prototype pages
 
@@ -22,53 +28,56 @@ Materialize's CSS and Google's material icons are linked in the `<head>`:
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 ```
 
-At the bottom of the `<body>` of `stuff.html` and `item.html` is a link to Materialize's JS, and a short "auto-initialize" script:
+At the bottom of the `<body>` is a link to Materialize's JS, and a short "auto-initialize" script:
 
 ```html
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <!-- initialize Materialize elements -->
+    <!-- Auto-initialize Materialize elements (Note - more specific initialization may be required for certain elements)-->
     <script> M.AutoInit();</script>
 ```
 
 The main content of the pages are found in the `<body>`, above the scripts. Each page uses a number of Materialize features in its content. Relevant documentation from the [Materialize website](https://materializecss.com/) is linked for each feature.
 
-- Every page:
+- All pages:
     - Surrounding container `<div>` to lightly center all main content. | [container documentation](https://materializecss.com/grid.html#grid-container)
     - Headings | [headers documentation](https://materializecss.com/typography.html#headers)
     - Stylized `<button>` elements or anchor `<a>` elements that are styled like buttons | [button documentation](https://materializecss.com/buttons.html)
     - "Waves" effects applied to various elements, largely buttons. | [waves effect documentation](https://materializecss.com/waves.html)
     - Icons (`<i>`) - (Materialize supports Google's Material Icons) | [icons documentation](https://materializecss.com/icons.html)
+    - A Navbar, which collapses and shows a sidenav for small screens (`<header>` and `<nav>`) | [navbar documentation](https://materializecss.com/navbar.html)
 
-- `index.html`, the Home page
+- `index.html`, the "home" page
     - Simple greeting in a heading | [headers documentation](https://materializecss.com/typography.html#headers)
     - Link-"button" to the Stuff page | ([button documentation](https://materializecss.com/buttons.html))
 
-- `stuff.html`, the Stuff inventory page 
+- `assignments.html`, the page with a list of all assignments 
     - Table of info for each item (name & quantity). | [table documentation](https://materializecss.com/table.html)
     - "INFO / EDIT" link-"button" to Item detail page and "DELETE" link-"button" (non-functional) for each item | [button documentation](https://materializecss.com/buttons.html)
     - "Add Item" form that contains:
-        - Text and number inputs for name quantity | [form inputs documentation](https://materializecss.com/text-inputs.html )
-        - a form submit button | [button documentation](https://materializecss.com/buttons.html#submit)
+        - Text, number, and date inputs  | [form inputs documentation](https://materializecss.com/text-inputs.html )
+            - Note that we are using the standard `type=date` rather than the custom Materialize "Date Pickers"
+        - A Select input | [select inputs documentation](https://materializecss.com/select.html )
+        - A form submit button | [button documentation](https://materializecss.com/buttons.html#submit)
         - The form layout is done via Materialize's Grid system. | [grid documentation](https://materializecss.com/grid.html#grid-intro)
 
-- `item.html`, the Item detail page
-    - Similar to `stuff.html`, all item info in a table (name & quantity & description) | [table documentation](https://materializecss.com/table.html)
+- `detail.html`, the page with a detailed view of a single assignment
+    - Similar to `stuff.html`, bunch of info in a table  | [table documentation](https://materializecss.com/table.html)
     - Text size/layout is responsive to screen size/layout. | [flow text documentation](https://materializecss.com/typography.html#flow)
     - "DELETE" link-"button" (non-functional) | [button documentation](https://materializecss.com/buttons.html)
     - Modal ("pop-up" mini-window) | [modal documentation](https://materializecss.com/modals.html)
         - "EDIT" link-"button" outside the modal that triggers showing the modal.
         - "NEVER MIND" button inside the modal that closes the modal. 
-    - "Edit Item" form inside the modal - similar to the "Add Item" form in `stuff.html` with an additional input for description | [form inputs documentation](https://materializecss.com/text-inputs.html )
+    - "Edit Item" form inside the modal - similar to the "Add Item" form in `stuff.html` with an additional `<textarea>` for description | [textarea input documentation](https://materializecss.com/text-inputs.html#textarea )
 
 > A great way to see what Materialize is doing for the page is to temporarily remove or comment out the links to the Materialize CSS/JS.
 
-You may notice that our prototypes currently lack a navigation bar (aka "navbar") which is a common feature of many webapps, displaying at the top of every page. This omission is only temporary but purposeful - we will add one later when we have better techniques for reducing code repetition. However, if you wanted to add one now, you can read the [Materialize navbar documentation](https://materializecss.com/navbar.html).
+> Our nav bar is particularly repetitious, as it takes a large chunk of code and appears the same on all pages. We will eventually introduce a useful technique in EJS called "partials" that will allow us to encapsulate and reuse HTML chunks.
 
 ### (1.2.2) Custom CSS features
 
-In both the `stuff.html` and `item.html` pages, there is a small internal CSS stylesheet to set a few custom styles. The CSS is identical for both pages.
+In both the `assignments.html` and `detail.html` pages, there is a small internal CSS stylesheet to set a few custom styles. The CSS is identical for both pages.
 
 ```css
     /* these make the forms pop a little with a border that highlights when interacting with form inputs */
@@ -85,8 +94,9 @@ In both the `stuff.html` and `item.html` pages, there is a small internal CSS st
     tr:hover {
         background-color: #F0F0F0;
     }
+
 ```
-> You might be wondering why this example isn't using external stylesheets or JS scripts, especially when there is repetition. We'll refactor a little bit later, but for now its easier keeping everything related to one page in one file. However, if you wish to organize your CSS and JS into external files, go right ahead!
+> This example isn't using external stylesheets or JS scripts yet, which is again causing some repetitiousness. We'll refactor a little bit later, but for now its okay keeping everything related to one page in one file. However, if you wish to organize your own CSS and JS into external files from the start, go right ahead!
 
 ## (1.3) Viewing and Testing the prototype pages locally.
 
@@ -105,7 +115,7 @@ Here are 2 ways you can view your pages locally:
 
 ## (1.4) Optional: Publishing your prototypes with Github Pages
 
-Althoug prototypes aren't a fully working webapp yet, you can still publish your own prototypes on the web!
+Althoug prototypes aren't a fully working webapp yet, you can still publish your own prototypes on the web if you wish!
 
 You can use [Github Pages](https://pages.github.com/) to easily publish any Github repository as a simple website.  The process is fairly simple:
 1) Create a public Github repository with your HTML pages.
