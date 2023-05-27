@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homework Manager</title>
+    <title>Data Storage</title>
 
     <!-- Materialize CSS and Icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -36,17 +36,19 @@
     <header>
         <nav>
             <div class="nav-wrapper">
-                <a href="/" class="brand-logo"><i class="material-icons left">school</i>Homework Manager</a>
+                <a href="/" class="brand-logo"><i class="material-icons left">school</i>Data Storage</a>
                 <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="desktop-nav" class="right hide-on-med-and-down">
-                    <li><a href="index.html"><i class="material-icons left">home</i> Home</a></li>
-                    <li><a href="assignments.html"><i class="material-icons left">list</i> Assignments</a></li>
+                    <li><a href="/"><i class="material-icons left">home</i> Home</a></li>
+                    <li><a href="/data"><i class="material-icons left">list</i> Data</a></li>
+                    <li><a href="/categories"><i class="material-icons left">list</i> Categories</a></li>
                 </ul>
             </div>
         </nav>
         <ul id="mobile-nav" class="sidenav">
-            <li><a href="index.html"><i class="material-icons left">home</i> Home</a></li>
-            <li><a href="assignments.html"><i class="material-icons left">list</i> Assignments</a></li>
+            <li><a href="/"><i class="material-icons left">home</i> Home</a></li>
+            <li><a href="/data"><i class="material-icons left">list</i> Data</a></li>
+            <li><a href="/categories"><i class="material-icons left">list</i> Categories</a></li>
         </ul>
     </header>
     
@@ -56,22 +58,21 @@
             <h1>Textbook Assignment</h1>
             <table>
                 <tr>
-                    <th>Priority:</th>
-                    <td>2</td>
-                </tr>
-                <tr>
                     <th>Subject:</th>
-                    <td>Math</td>
+                    <td>Philosophy</td>
                 </tr>
                 <tr>
-                    <th>Due Date:</th>
-                    <td>Friday, May 26th 2023</td>
+                    <th>Flavor:</th>
+                    <td>Strawberry</td>
+                </tr>
+                <tr>
+                    <th>State:</th>
+                    <td>Confusion</td>
                 </tr>
                 <tr>
                     <th>Detailed Description:</th>
                     <td>
-                        Do odd questions in the range #155 - #207 (chapter 11).
-                        Remember to show your work!
+                        Pick a god and pray.
                     </td>
                 </tr>
             </table>
@@ -96,35 +97,40 @@
                 <h2>Edit item:</h2>
                 <form id="updateForm">
                     <div class="row">
-                        <div class="input-field col s8">
-                            <input type="text" id="titleInput" name="title" class="validate" data-length="45" required value="Textbook Assignment">
-                            <label for="titleInput">Assignment title:</label>
-                        </div>
-                        <div class="input-field col s4">
-                            <input type="number" id="priorityInput" name="priority" class="validate" min=1 max=10 value=2>
-                            <label for="priorityInput">Priority (1-10):</label>
-                        </div>
-    
                         <div class="input-field col s6">
-                            <select type="number" id="subjectInput" name="subject" required>
-                                <option value="" disabled>Choose your subject</option>
-                                <option value=1>Comp Sci</option>
-                                <option value=2 selected>Math</option>
-                                <option value=3>Language</option>
-                                <option value=4>Music</option>
-                              </select>
-                              <label for="subjectInput">Subject:</label>
-                        </div>
-    
-                        <div class="input-field col s6">
-                            <input type="date" id="dueDateInput" name="dueDate" value="2023-05-26">  <!-- Note that the date value format is "yyyy-mm-dd" -->
-                            <label for="dueDateInput">Due Date:</label>
-                        </div>
+                        <input type="text" id="titleInput" name="title" class="validate" data-length="45" required value="Textbook Assignment">
+                        <label for="titleInput">Name:</label>
+                    </div>
+                    
+                    <div class="input-field col s6">
+                        <select type="number" id="slot1input" name="slot1" required>
+                            <option value="" disabled selected>Philosophy</option>
+                            <option value=1>Math</option>
+                            <option value=2>Language</option>
+                            <option value=3>ID-F86</option>
+                          </select>
+                          <label for="slot1Input">Subject:</label>
+                    </div>
 
-                        <div class="input-field col s12">
-                            <textarea class="materialize-textarea" id="descriptionInput" name="description" data-length="150">Do odd questions in the range #155 - #207 (chapter 11). Remember to show your work!</textarea>
-                            <label for="descriptionInput">Detailed Description:</label>
-                        </div>
+                    <div class="input-field col s6">
+                        <select type="number" id="slot2Input" name="slot2" required>
+                            <option value="" disabled selected>Strawberry</option>
+                            <option value=1>Chocolate</option>
+                            <option value=2>Vanilla</option>
+                            <option value=3>Internal Struggles</option>
+                          </select>
+                          <label for="slot2Input">Flavor:</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <select type="number" id="slot3Input" name="slot3" required>
+                            <option value="" disabled selected>Confusion</option>
+                            <option value=1>Solid</option>
+                            <option value=2>Denial</option>
+                            <option value=3>Nebraska</option>
+                          </select>
+                          <label for="slot3Input">State:</label>
+                    </div>
     
                     </div>
                 </form>

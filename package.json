@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodejs": "^0.0.0"
+  },
+  "name": "multipurpose-data-storage",
+  "description": "Welcome to my basic web-app building tutorial series. Together, we will build a simple \"inventory\" web application. The running example will be a homework tracker; in each tutorial, you will be given the next steps.",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
