@@ -2,6 +2,12 @@
 const express = require( "express" );
 const app = express();
 const port = 3000;
+const logger = require("morgan");
+
+app.use(logger("dev"));
+
+// define middleware that serves static resources in the public directory
+app.use(express.static(__dirname + '/public'));
 
 // define a route for the default home page
 app.get( "/", ( req, res ) => {
