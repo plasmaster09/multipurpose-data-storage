@@ -41,24 +41,24 @@
     <!-- Actual page content! -->
     <div class="container">
         <div class="section flow-text" id="details">
-            <h1>Textbook Assignment</h1>
+            <h1><%= piece[1].title %></h1>
             <table>
                 <tr>
-                    <th>Subject:</th>
-                    <td>Philosophy</td>
+                    <th><%= piece[0].slotId1 %>:</th>
+                    <td><%= piece[1].slotId1 %></td>
                 </tr>
                 <tr>
-                    <th>Flavor:</th>
-                    <td>Strawberry</td>
+                    <th><%= piece[0].slotId2 %>:</th>
+                    <td><%= piece[1].slotId2 %></td>
                 </tr>
                 <tr>
-                    <th>State:</th>
-                    <td>Confusion</td>
+                    <th><%= piece[0].slotId3 %>:</th>
+                    <td><%= piece[1].slotId3 %></td>
                 </tr>
                 <tr>
                     <th>Detailed Description:</th>
                     <td>
-                        Pick a god and pray.
+                        <%= piece[1].description %>
                     </td>
                 </tr>
             </table>
@@ -69,7 +69,7 @@
                 <i class="material-icons right">edit</i>
                 Edit
             </a>
-            <a class="btn-large waves-effect waves-light red right">
+            <a class="btn-large waves-effect waves-light red right" href="/data/<%= piece[1].dataId %>/delete">
                 <i class="material-icons right">delete</i>
                 Delete
             </a>
@@ -84,38 +84,37 @@
                 <form id="updateForm">
                     <div class="row">
                         <div class="input-field col s6">
-                        <input type="text" id="titleInput" name="title" class="validate" data-length="45" required value="Textbook Assignment">
+                        <input type="text" id="titleInput" name="title" class="validate" data-length="45" required value="<%= piece[1].title %>">
                         <label for="titleInput">Name:</label>
                     </div>
-                    
                     <div class="input-field col s6">
                         <select type="number" id="slot1input" name="slot1" required>
-                            <option value="" disabled selected>Philosophy</option>
-                            <option value=1>Math</option>
-                            <option value=2>Language</option>
-                            <option value=3>ID-F86</option>
+                            <option value="" disabled selected><%= piece[1].slotId1 %></option>
+                            <% for (let i = 0; i < piece[2].description.substring(1, piece[2].description.length - 1).replaceAll("\"", "").split(",").length; i++) { %>
+                            <option value=i><%= piece[2].description.substring(1, piece[2].description.length - 1).replaceAll("\"", "").split(",")[i] %></option>
+                            <% } %>
                           </select>
-                          <label for="slot1Input">Subject:</label>
+                          <label for="slot1Input"><%= piece[0].slotId1 %>:</label>
                     </div>
 
                     <div class="input-field col s6">
-                        <select type="number" id="slot2Input" name="slot2" required>
-                            <option value="" disabled selected>Strawberry</option>
-                            <option value=1>Chocolate</option>
-                            <option value=2>Vanilla</option>
-                            <option value=3>Internal Struggles</option>
+                        <select type="number" id="slot1input" name="slot1" required>
+                            <option value="" disabled selected><%= piece[1].slotId2 %></option>
+                            <% for (let i = 0; i < piece[3].description.substring(1, piece[3].description.length - 1).replaceAll("\"", "").split(",").length; i++) { %>
+                            <option value=i><%= piece[3].description.substring(1, piece[3].description.length - 1).replaceAll("\"", "").split(",")[i] %></option>
+                            <% } %>
                           </select>
-                          <label for="slot2Input">Flavor:</label>
+                          <label for="slot1Input"><%= piece[0].slotId2 %>:</label>
                     </div>
 
                     <div class="input-field col s6">
-                        <select type="number" id="slot3Input" name="slot3" required>
-                            <option value="" disabled selected>Confusion</option>
-                            <option value=1>Solid</option>
-                            <option value=2>Denial</option>
-                            <option value=3>Nebraska</option>
+                        <select type="number" id="slot1input" name="slot1" required>
+                            <option value="" disabled selected><%= piece[1].slotId3 %></option>
+                            <% for (let i = 0; i < piece[4].description.substring(1, piece[4].description.length - 1).replaceAll("\"", "").split(",").length; i++) { %>
+                            <option value=i><%= piece[4].description.substring(1, piece[4].description.length - 1).replaceAll("\"", "").split(",")[i] %></option>
+                            <% } %>
                           </select>
-                          <label for="slot3Input">State:</label>
+                          <label for="slot1Input"><%= piece[0].slotId3 %>:</label>
                     </div>
     
                     </div>

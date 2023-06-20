@@ -48,68 +48,33 @@
                 <thead>
 
                     <tr>
-                        <th>Name</th>
-                        <th>Subject</th>
-                        <th>Flavor</th>
-                        <th>State</th>
+                        <th><%= stuff[0].title%></th>
+                        <th><%= stuff[0].slotId1 %></th>
+                        <th><%= stuff[0].slotId2 %></th>
+                        <th><%= stuff[0].slotId3 %></th>
                         <th></th>
                     </tr>
 
                 </thead>
                 <tbody>
-
+                    <% for (let i = 4; i < stuff.length; i++) { %>
                     <tr>
-                        <td>Textbook Exercises</td>
-                        <td>Math</td>
-                        <td>Chocolate</td>
-                        <td>Solid</td>
+                        <td><%= stuff[i].title%></td>
+                        <td><%= stuff[i].slotId1 %></td>
+                        <td><%= stuff[i].slotId2 %></td>
+                        <td><%= stuff[i].slotId3 %></td>
                         <td>
-                            <a class="btn-small waves-effect waves-light" href="/data/detail">
+                            <a class="btn-small waves-effect waves-light" href="/data/<%= i - 3 %>">
                                 <i class="material-icons right">edit</i>
                                 Info/Edit
                             </a>
-                            <a class="btn-small waves-effect waves-light red">
+                            <a class="btn-small waves-effect waves-light red" href="/data/<%= i - 3 %>/delete">
                                 <i class="material-icons right">delete</i>
                                 Delete
                             </a>
                         </td>
                     </tr>
-
-                    <tr>
-                        <td>Long Form Essay</td>
-                        <td>Language</td>
-                        <td>Vanilla</td>
-                        <td>Denial</td>
-                        <td>
-                            <a class="btn-small waves-effect waves-light" href="/data/detail">
-                                <i class="material-icons right">edit</i>
-                                Info/Edit
-                            </a>
-                            <a class="btn-small waves-effect waves-light red">
-                                <i class="material-icons right">delete</i>
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Web App Project</td>
-                        <td>ID-F86</td>
-                        <td>Internal Struggles</td>
-                        <td>Nebraska</td>
-                        <td>
-                            <a class="btn-small waves-effect waves-light" href="/data/detail">
-                                <i class="material-icons right">edit</i>
-                                Info/Edit
-                            </a>
-                            <a class="btn-small waves-effect waves-light red">
-                                <i class="material-icons right">delete</i>
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-
-
+                    <% } %>
                 </tbody>
             </table>
         </div>
@@ -126,31 +91,31 @@
                     <div class="input-field col s6">
                         <select type="number" id="slot1input" name="slot1" required>
                             <option value="" disabled selected></option>
-                            <option value=1>Math</option>
-                            <option value=2>Language</option>
-                            <option value=3>ID-F86</option>
+                            <% for (let i = 0; i < stuff[1].description.length; i++) { %>
+                            <option value=i><%= stuff[1].description[i] %></option>
+                            <% } %>
                           </select>
-                          <label for="slot1Input">Subject:</label>
+                          <label for="slot1Input"><%= stuff[0].slotId1 %></label>
                     </div>
 
                     <div class="input-field col s6">
                         <select type="number" id="slot2Input" name="slot2" required>
                             <option value="" disabled selected></option>
-                            <option value=1>Chocolate</option>
-                            <option value=2>Vanilla</option>
-                            <option value=3>Internal Struggles</option>
+                            <% for (let i = 0; i < stuff[2].description.length; i++) { %>
+                            <option value=i><%= stuff[2].description[i] %></option>
+                            <% } %>
                           </select>
-                          <label for="slot2Input">Flavor:</label>
+                          <label for="slot2Input"><%= stuff[0].slotId2 %></label>
                     </div>
 
                     <div class="input-field col s6">
                         <select type="number" id="slot3Input" name="slot3" required>
                             <option value="" disabled selected></option>
-                            <option value=1>Solid</option>
-                            <option value=2>Denial</option>
-                            <option value=3>Nebraska</option>
+                            <% for (let i = 0; i < stuff[3].description.length; i++) { %>
+                            <option value=i><%= stuff[3].description[i] %></option>
+                            <% } %>
                           </select>
-                          <label for="slot3Input">State:</label>
+                          <label for="slot3Input"><%= stuff[0].slotId3 %></label>
                     </div>
 
                 </div>

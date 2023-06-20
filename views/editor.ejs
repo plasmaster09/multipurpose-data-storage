@@ -48,43 +48,24 @@
                 <thead>
 
                     <tr>
-                        <th>Subject</th>
+                        <th>ID</th>
+                        <th><%= cat[0].typeName %></th>
                     </tr>
 
                 </thead>
                 <tbody>
-
+                    <% for (let i = 2; i < cat.length; i++) { %>
                     <tr>
-                        <td>Math</td>
+                        <td><%= cat[i].typeId %></td>
+                        <td><%= cat[i].typeName %></td>
                         <td>
-                            <a class="btn-small waves-effect waves-light red">
+                            <a class="btn-small waves-effect waves-light red" href="/categories/<%= cat[1].typeName %>/<%= cat[i].typeId %>/delete">
                                 <i class="material-icons right">delete</i>
                                 Delete
                             </a>
                         </td>
                     </tr>
-
-                    <tr>
-                        <td>Language</td>
-                        <td>
-                            <a class="btn-small waves-effect waves-light red">
-                                <i class="material-icons right">delete</i>
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>ID-F86</td>
-                        <td>
-                            <a class="btn-small waves-effect waves-light red">
-                                <i class="material-icons right">delete</i>
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-
-
+                    <% } %>
                 </tbody>
             </table>
         </div>
