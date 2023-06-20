@@ -29,6 +29,12 @@
                     <li><a href="/"><i class="material-icons left">home</i> Home</a></li>
                     <li><a href="/data"><i class="material-icons left">list</i> Data</a></li>
                     <li><a href="/categories"><i class="material-icons left">list</i> Categories</a></li>
+                    <% if (isLoggedIn) { %>
+                        <li><a href="/profile"><i class="material-icons left">person</i> Hello, <%=user.name%></a> </li>
+                        <li><a href="/logout" class="btn red">Logout</a></li>                        
+                    <% } else { %>
+                        <li><a href="/login" class="btn blue">Login</a></li>
+                    <% } %>
                 </ul>
             </div>
         </nav>
@@ -36,6 +42,12 @@
             <li><a href="/"><i class="material-icons left">home</i> Home</a></li>
             <li><a href="/data"><i class="material-icons left">list</i> Data</a></li>
             <li><a href="/categories"><i class="material-icons left">list</i> Categories</a></li>
+            <% if (isLoggedIn) { %>
+                <li><a href="/profile"><i class="material-icons left">person</i> Hello, <%=user.name%></a> </li>
+                <li><a href="/logout" class="btn red">Logout</a></li>                        
+            <% } else { %>
+                <li><a href="/login" class="btn blue">Login</a></li>
+            <% } %>
         </ul>
     </header>
 
@@ -64,11 +76,11 @@
                         <td><%= stuff[i].slotId2 %></td>
                         <td><%= stuff[i].slotId3 %></td>
                         <td>
-                            <a class="btn-small waves-effect waves-light" href="/data/<%= i - 3 %>">
+                            <a class="btn-small waves-effect waves-light" href="/data/<%= stuff[i].dataId %>">
                                 <i class="material-icons right">edit</i>
                                 Info/Edit
                             </a>
-                            <a class="btn-small waves-effect waves-light red" href="/data/<%= i - 3 %>/delete">
+                            <a class="btn-small waves-effect waves-light red" href="/data/<%= stuff[i].dataId %>/delete">
                                 <i class="material-icons right">delete</i>
                                 Delete
                             </a>
@@ -92,7 +104,7 @@
                         <select type="number" id="slot1input" name="slot1" required>
                             <option value="" disabled selected></option>
                             <% for (let i = 0; i < stuff[1].description.length; i++) { %>
-                            <option value=i><%= stuff[1].description[i] %></option>
+                            <option value="<% i %>"><%= stuff[1].description[i] %></option>
                             <% } %>
                           </select>
                           <label for="slot1Input"><%= stuff[0].slotId1 %></label>
@@ -102,7 +114,7 @@
                         <select type="number" id="slot2Input" name="slot2" required>
                             <option value="" disabled selected></option>
                             <% for (let i = 0; i < stuff[2].description.length; i++) { %>
-                            <option value=i><%= stuff[2].description[i] %></option>
+                            <option value="<% i %>"><%= stuff[2].description[i] %></option>
                             <% } %>
                           </select>
                           <label for="slot2Input"><%= stuff[0].slotId2 %></label>
@@ -112,7 +124,7 @@
                         <select type="number" id="slot3Input" name="slot3" required>
                             <option value="" disabled selected></option>
                             <% for (let i = 0; i < stuff[3].description.length; i++) { %>
-                            <option value=i><%= stuff[3].description[i] %></option>
+                            <option value="<% i %>"><%= stuff[3].description[i] %></option>
                             <% } %>
                           </select>
                           <label for="slot3Input"><%= stuff[0].slotId3 %></label>

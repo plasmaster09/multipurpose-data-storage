@@ -5,8 +5,25 @@ const express = require( "express" );
 const app = express();
 const port = 3000;
 const logger = require("morgan");
+const { auth } = require('express-openid-connect');
+const { requiresAuth } = require('express-openid-connect');
+
+const config = {
+    authRequired: false,
+    auth0Logout: true,
+    secret: process.env.AUTH0_SECRET,
+    baseURL: process.env.AUTH0_BASE_URL,
+    clientID: process.env.AUTH0_CLIENT_ID,
+    issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL
+  };
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
 
 app.use(logger("dev"));
+
+// Configure Express to parse URL-encoded POST request bodies (traditional forms)
+app.use( express.urlencoded({ extended: false }) );
 
 // Configure Express to use EJS
 app.set( "views",  __dirname + "/views");
@@ -14,6 +31,21 @@ app.set( "view engine", "ejs" );
 
 // define middleware that serves static resources in the public directory
 app.use(express.static(__dirname + '/public'));
+
+app.use((req, res, next) => {
+    res.locals.isLoggedIn = req.oidc.isAuthenticated();
+    res.locals.user = req.oidc.user;
+    next();
+})
+
+app.get('/profile', requiresAuth(), (req, res) => {
+    res.send(JSON.stringify(req.oidc.user));
+  });
+
+// req.isAuthenticated is provided from the auth router
+app.get('/authtest', (req, res) => {
+    res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+  });
 
 // define a route for the default home page
 app.get( "/", ( req, res ) => {
@@ -157,6 +189,169 @@ app.get( "/categories/:id", ( req, res ) => {
         }
     });
 } );
+
+// define a route for assignment DELETE
+const delete_type1_sql = `
+    DELETE 
+    FROM
+        types1
+    WHERE
+        type1Id = ?
+`
+app.get("/categories/1/:id/delete", ( req, res ) => {
+    db.execute(delete_type1_sql, [req.params.id], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            res.redirect("/categories/1");
+        }
+    });
+});
+
+// define a route for assignment DELETE
+const delete_type2_sql = `
+    DELETE 
+    FROM
+        types2
+    WHERE
+        type2Id = ?
+`
+app.get("/categories/2/:id/delete", ( req, res ) => {
+    db.execute(delete_type2_sql, [req.params.id], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            res.redirect("/categories/2");
+        }
+    });
+});
+
+// define a route for assignment DELETE
+const delete_type3_sql = `
+    DELETE 
+    FROM
+        types3
+    WHERE
+        type3Id = ?
+`
+app.get("/categories/3/:id/delete", ( req, res ) => {
+    db.execute(delete_type3_sql, [req.params.id], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            res.redirect("/categories/3");
+        }
+    });
+});
+
+// define a route for assignment DELETE
+const delete_data_sql = `
+    DELETE 
+    FROM
+        data
+    WHERE
+        dataId = ?
+`
+app.get("/data/:id/delete", ( req, res ) => {
+    db.execute(delete_data_sql, [req.params.id], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            res.redirect("/data");
+        }
+    });
+});
+
+const create_types1_sql = `
+    INSERT INTO types1 
+        (type1Name) 
+    VALUES 
+        (?);
+`
+
+app.post("/categories/1", ( req, res ) => {
+    db.execute(create_types1_sql, [req.body.title], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            //results.insertId has the primary key (assignmentId) of the newly inserted row.
+            res.redirect(`/categories/1`);
+        }
+    });
+});
+
+const create_types2_sql = `
+    INSERT INTO types2 
+        (type2Name) 
+    VALUES 
+        (?);
+`
+
+app.post("/categories/2", ( req, res ) => {
+    db.execute(create_types2_sql, [req.body.title], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            //results.insertId has the primary key (assignmentId) of the newly inserted row.
+            res.redirect(`/categories/2`);
+        }
+    });
+});
+
+const create_types3_sql = `
+    INSERT INTO types3 
+        (type3Name) 
+    VALUES 
+        (?);
+`
+
+app.post("/categories/3", ( req, res ) => {
+    db.execute(create_types3_sql, [req.body.title], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            //results.insertId has the primary key (assignmentId) of the newly inserted row.
+            res.redirect(`/categories/3`);
+        }
+    });
+});
+
+const create_data_sql = `
+insert into data (title, slotId1, slotId2, slotId3) 
+select (?, type1Id, type2Id, type3Id)
+from types1
+join types2 on type2Name = ?
+join types3 on type3Name = ?
+where types1.type1Name = ?
+`
+
+app.post("/data", ( req, res ) => {
+    console.log(req.body.slot2)
+    db.execute(create_data_sql, [req.body.title, req.body.slot2, req.body.slot3, req.body.slot1], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            //results.insertId has the primary key (assignmentId) of the newly inserted row.
+            res.redirect(`/data`);
+        }
+    });
+});
 
 // start the server
 app.listen( port, () => {

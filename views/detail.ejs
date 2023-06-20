@@ -28,6 +28,12 @@
                     <li><a href="/"><i class="material-icons left">home</i> Home</a></li>
                     <li><a href="/data"><i class="material-icons left">list</i> Data</a></li>
                     <li><a href="/categories"><i class="material-icons left">list</i> Categories</a></li>
+                    <% if (isLoggedIn) { %>
+                        <li><a href="/profile"><i class="material-icons left">person</i> Hello, <%=user.name%></a> </li>
+                        <li><a href="/logout" class="btn red">Logout</a></li>                        
+                    <% } else { %>
+                        <li><a href="/login" class="btn blue">Login</a></li>
+                    <% } %>
                 </ul>
             </div>
         </nav>
@@ -35,6 +41,12 @@
             <li><a href="/"><i class="material-icons left">home</i> Home</a></li>
             <li><a href="/data"><i class="material-icons left">list</i> Data</a></li>
             <li><a href="/categories"><i class="material-icons left">list</i> Categories</a></li>
+            <% if (isLoggedIn) { %>
+                <li><a href="/profile"><i class="material-icons left">person</i> Hello, <%=user.name%></a> </li>
+                <li><a href="/logout" class="btn red">Logout</a></li>                        
+            <% } else { %>
+                <li><a href="/login" class="btn blue">Login</a></li>
+            <% } %>
         </ul>
     </header>
     
@@ -98,7 +110,7 @@
                     </div>
 
                     <div class="input-field col s6">
-                        <select type="number" id="slot1input" name="slot1" required>
+                        <select type="number" id="slot2input" name="slot2" required>
                             <option value="" disabled selected><%= piece[1].slotId2 %></option>
                             <% for (let i = 0; i < piece[3].description.substring(1, piece[3].description.length - 1).replaceAll("\"", "").split(",").length; i++) { %>
                             <option value=i><%= piece[3].description.substring(1, piece[3].description.length - 1).replaceAll("\"", "").split(",")[i] %></option>
@@ -108,7 +120,7 @@
                     </div>
 
                     <div class="input-field col s6">
-                        <select type="number" id="slot1input" name="slot1" required>
+                        <select type="number" id="slot3input" name="slot3" required>
                             <option value="" disabled selected><%= piece[1].slotId3 %></option>
                             <% for (let i = 0; i < piece[4].description.substring(1, piece[4].description.length - 1).replaceAll("\"", "").split(",").length; i++) { %>
                             <option value=i><%= piece[4].description.substring(1, piece[4].description.length - 1).replaceAll("\"", "").split(",")[i] %></option>
