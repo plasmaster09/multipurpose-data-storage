@@ -29,12 +29,6 @@
                     <li><a href="/"><i class="material-icons left">home</i> Home</a></li>
                     <li><a href="/data"><i class="material-icons left">list</i> Data</a></li>
                     <li><a href="/categories"><i class="material-icons left">list</i> Categories</a></li>
-                    <% if (isLoggedIn) { %>
-                        <li><a href="/profile"><i class="material-icons left">person</i> Hello, <%=user.name%></a> </li>
-                        <li><a href="/logout" class="btn red">Logout</a></li>                        
-                    <% } else { %>
-                        <li><a href="/login" class="btn blue">Login</a></li>
-                    <% } %>
                 </ul>
             </div>
         </nav>
@@ -42,42 +36,8 @@
             <li><a href="/"><i class="material-icons left">home</i> Home</a></li>
             <li><a href="/data"><i class="material-icons left">list</i> Data</a></li>
             <li><a href="/categories"><i class="material-icons left">list</i> Categories</a></li>
-            <% if (isLoggedIn) { %>
-                <li><a href="/profile"><i class="material-icons left">person</i> Hello, <%=user.name%></a> </li>
-                <li><a href="/logout" class="btn red">Logout</a></li>                        
-            <% } else { %>
-                <li><a href="/login" class="btn blue">Login</a></li>
-            <% } %>
         </ul>
     </header>
-
-    <div class="modal" id="rename">
-
-        <div class="modal-content">
-
-            <h2>Rename category:</h2>
-            <form id="updateForm">
-                <div class="row">
-                    <div class="input-field col s12">
-                    <input type="text" id="titleInput" name="title" class="validate" data-length="45" required value="Subject">
-                    <label for="titleInput">Name:</label>
-                </div>
-
-                </div>
-            </form>
-            <!-- A section for the footer of the modal -->
-            <div class="modal-footer">
-                <!-- Since the submit button is not within the form, it must have the form attribute specified-->
-                <button class="btn waves-effect waves-light " type="submit" form="updateForm">
-                    <i class="material-icons right">send</i>
-                    Submit
-                </button>
-                <button class="modal-close waves-effect waves-green btn-flat" >Never Mind</button>
-            </div>
-            
-        </div>
-
-    </div>
 
     <!-- Actual page content! -->
     <div class="container">
@@ -101,10 +61,6 @@
                         <td><%= cats[i].name %></td>
                         <td><%= cats[i].count1 %></td>
                         <td>
-                            <a class="btn-small waves-effect waves-light modal-trigger" href="#edit<%= cats[i].id %>">
-                                <i class="material-icons right">edit</i>
-                                Rename Category
-                            </a>
                             <a class="btn-small waves-effect waves-light green" href="/categories/<%= cats[i].id %>">
                                 <i class="material-icons right">edit</i>
                                 Edit Options
@@ -116,88 +72,31 @@
             </table>
         </div>
 
-        <div class="modal" id="edit1">
-
-            <div class="modal-content">
-
-                <h2>Edit item:</h2>
-                <form id="updateForm">
-                    <div class="row">
-                        <div class="input-field col s6">
-                        <input type="text" id="titleInput" name="title" class="validate" data-length="45" required value="<%= cats[0].name %>">
-                        <label for="titleInput">Name:</label>
+        <div class="section" id="add">
+            <h3>Rename Categories:</h3>
+            <form id="addForm" method="post">
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input type="text" id="title1" name="title1" class="validate" data-length="45" required value="<%= cats[0].name %>">
+                        <label for="titleInput">Slot 1:</label>
                     </div>
-    
+                    
+                    <div class="input-field col s4">
+                        <input type="text" id="title2" name="title2" class="validate" data-length="45" required value="<%= cats[1].name %>">
+                        <label for="titleInput">Slot 2:</label>
                     </div>
-                </form>
-                <!-- A section for the footer of the modal -->
-                <div class="modal-footer">
-                    <!-- Since the submit button is not within the form, it must have the form attribute specified-->
-                    <button class="btn waves-effect waves-light " type="submit" form="updateForm">
-                        <i class="material-icons right">send</i>
-                        Submit
-                    </button>
-                    <button class="modal-close waves-effect waves-green btn-flat" >Never Mind</button>
+
+                    <div class="input-field col s4">
+                        <input type="text" id="title3" name="title3" class="validate" data-length="45" required value="<%= cats[2].name %>">
+                        <label for="titleInput">Slot 3:</label>
+                    </div>
+
                 </div>
-                
-            </div>
-
-        </div>
-
-        <div class="modal" id="edit2">
-
-            <div class="modal-content">
-
-                <h2>Edit item:</h2>
-                <form id="updateForm">
-                    <div class="row">
-                        <div class="input-field col s6">
-                        <input type="text" id="titleInput" name="title" class="validate" data-length="45" required value="<%= cats[1].name %>">
-                        <label for="titleInput">Name:</label>
-                    </div>
-    
-                    </div>
-                </form>
-                <!-- A section for the footer of the modal -->
-                <div class="modal-footer">
-                    <!-- Since the submit button is not within the form, it must have the form attribute specified-->
-                    <button class="btn waves-effect waves-light " type="submit" form="updateForm">
-                        <i class="material-icons right">send</i>
-                        Submit
-                    </button>
-                    <button class="modal-close waves-effect waves-green btn-flat" >Never Mind</button>
-                </div>
-                
-            </div>
-
-        </div>
-
-        <div class="modal" id="edit3">
-
-            <div class="modal-content">
-
-                <h2>Edit item:</h2>
-                <form id="updateForm">
-                    <div class="row">
-                        <div class="input-field col s6">
-                        <input type="text" id="titleInput" name="title" class="validate" data-length="45" required value="<%= cats[2].name %>">
-                        <label for="titleInput">Name:</label>
-                    </div>
-    
-                    </div>
-                </form>
-                <!-- A section for the footer of the modal -->
-                <div class="modal-footer">
-                    <!-- Since the submit button is not within the form, it must have the form attribute specified-->
-                    <button class="btn waves-effect waves-light " type="submit" form="updateForm">
-                        <i class="material-icons right">send</i>
-                        Submit
-                    </button>
-                    <button class="modal-close waves-effect waves-green btn-flat" >Never Mind</button>
-                </div>
-                
-            </div>
-
+                <button class="btn waves-effect waves-light" type="submit">
+                    <i class="material-icons right">send</i>
+                    Submit
+                </button>
+            </form>
         </div>
     </div>
 

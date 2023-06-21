@@ -117,43 +117,6 @@ app.get( "/categories", ( req, res ) => {
     });
 } );
 
-const read_detail_sql = `
-select null as dataId, "Name" as title, c1.name as slotId1, c2.name as slotId2, c3.name as slotId3, null as description
-from categorynames as c1
-join categorynames as c2 on c2.id = 2
-join categorynames as c3 on c3.id = 3
-where c1.id = 1
-union
-select dataId, title, type1Name as slotId1, type2Name as slotId2, type3Name as slotId3, description
-from data
-join types1 on type1Id = slotId1
-join types2 on type2Id = slotId2
-join types3 on type3Id = slotId3
-where dataId = ?
-union
-select null as dataId, null as title, null as slotId1, null as slotId2, null as slotId3, json_arrayagg(type1Name) as description from types1
-union
-select null as dataId, null as title, null as slotId1, null as slotId2, null as slotId3, json_arrayagg(type2Name) as description from types2
-union
-select null as dataId, null as title, null as slotId1, null as slotId2, null as slotId3, json_arrayagg(type3Name) as description from types3
-`
-
-// define a route for the assignment detail page
-app.get( "/data/:id", ( req, res ) => {
-    db.execute(read_detail_sql, [req.params.id], (error, results) => {
-        if (DEBUG)
-            console.log(error ? error : results);
-        if (error)
-            res.status(500).send(error); //Internal Server Error
-        else if (results.length == 0)
-            res.status(404).send(`No assignment found with id = "${req.params.id}"` ); // NOT FOUND
-            else {
-                let data = {piece: results}; // results is still an array, get first (only) element
-                res.render('detail', data);
-            }
-    });
-} );
-
 const read_editor_sql = `
 select 0 as typeId, name as typeName
 from categorynames
@@ -332,7 +295,7 @@ app.post("/categories/3", ( req, res ) => {
 
 const create_data_sql = `
 insert into data (title, slotId1, slotId2, slotId3) 
-select (?, type1Id, type2Id, type3Id)
+select ?, type1Id, type2Id, type3Id
 from types1
 join types2 on type2Name = ?
 join types3 on type3Name = ?
@@ -340,7 +303,6 @@ where types1.type1Name = ?
 `
 
 app.post("/data", ( req, res ) => {
-    console.log(req.body.slot2)
     db.execute(create_data_sql, [req.body.title, req.body.slot2, req.body.slot3, req.body.slot1], (error, results) => {
         if (DEBUG)
             console.log(error ? error : results);
@@ -349,6 +311,46 @@ app.post("/data", ( req, res ) => {
         else {
             //results.insertId has the primary key (assignmentId) of the newly inserted row.
             res.redirect(`/data`);
+        }
+    });
+});
+
+const update_cat1_sql = `
+update categorynames
+set name = ? where id = 1
+`
+
+const update_cat2_sql = `
+update categorynames
+set name = ? where id = 2
+`
+
+const update_cat3_sql = `
+update categorynames
+set name = ? where id = 3
+`
+
+app.post("/categories", ( req, res ) => {
+    db.execute(update_cat1_sql, [req.body.title1], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+    });
+    db.execute(update_cat2_sql, [req.body.title2], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+    });
+    db.execute(update_cat3_sql, [req.body.title3], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            //results.insertId has the primary key (assignmentId) of the newly inserted row.
+            res.redirect(`/categories`);
         }
     });
 });
